@@ -2,7 +2,7 @@
 // Name: oled-display.c
 //
 // Created: 15.02.2021 18:44:51
-// Author : Filip Bartoš
+// Author : Filip Bartoï¿½
 // Websites used as reference:
 /* https://embedds.com/programming-avr-i2c-interface/
  * https://www.hwkitchen.cz/user/related_files/graficky-displej-oled-096-128x64-i2c-datasheet.pdf
