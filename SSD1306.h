@@ -1,9 +1,10 @@
-/*
- * SSD1306.h
- *
- * Created: 16.02.2021 12:19:50
- *  Author: Filip
- */ 
+/***************************************
+* Name: SSD1306.c                      *
+* Author: Filip Bartoš                 *
+*                                      *
+* Contains the main functions used to  *
+* communicate with the SSD1306 driver  *
+***************************************/
 
 
 #ifndef SSD1306_H_
