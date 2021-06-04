@@ -1,9 +1,10 @@
-/*
- * s_TWI.c
- *
- * Created: 15.02.2021 19:06:58
- *  Author: Filip
- */ 
+/***************************************
+* Name: TWI.c                          *
+* Author: Filip Bartoš                 *
+*                                      *
+* Contains the main functions used for *
+* TWI communication                    *
+***************************************/
 
 #include "s_TWI.h"
 
@@ -94,7 +95,7 @@ void TWI_write(uint8_t byte)
 // Input: None
 // Output:
 //  - TWDR: Recieved value at TWI interface
-//  - 0: Error
+//  - (0: Error)
 //------------------------------------------------
 uint8_t TWI_read_ACK(void)
 {
@@ -111,7 +112,7 @@ uint8_t TWI_read_ACK(void)
 // Input: None
 // Output:
 //  - TWDR: Recieved value at TWI interface
-//  - 0: Error
+//  - (0: Error)
 //------------------------------------------------
 uint8_t TWI_read_NACK(void)
 {
