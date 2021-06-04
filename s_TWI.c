@@ -17,7 +17,7 @@
 //------------------------------------------------
 void TWI_init(void)
 {
-	//Set prescaler
+	// Set prescaler
 	switch (PSC_TWI) {
         case 4:
             TWSR = 0x1;
@@ -48,13 +48,13 @@ void TWI_init(void)
 //------------------------------------------------
 void TWI_start(uint8_t address)
 {
-	//Start
+	// Start
 	TWCR = (1<<TWINT) | (1<<TWSTA) | (1<<TWEN);
 	
 	
 	while(!(TWCR & (1<<TWINT)));
 	
-	//Send address
+	// Send address
 	TWDR = address;
 	TWCR = (1<<TWINT) | (1<<TWEN);
 	
@@ -69,7 +69,7 @@ void TWI_start(uint8_t address)
 //------------------------------------------------
 void TWI_stop(void)
 {
-	//Stop
+	// Stop
 	TWCR = (1<<TWINT) | (1<<TWSTO) | (1<<TWEN);
 }
 
