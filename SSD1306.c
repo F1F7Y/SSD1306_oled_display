@@ -1,13 +1,22 @@
-/*
- * SSD1306.c
- *
- * Created: 16.02.2021 12:19:38
- *  Author: Filip
- */
+/***************************************
+* Name: SSD1306.c                      *
+* Author: Filip Bartoš                 *
+*                                      *
+* Contains the main functions used to  *
+* communicate with the SSD1306 driver  *
+***************************************/
+
 
 #include "s_TWI.h"
 #include "SSD1306.h"
 
+
+//------------------------------------------------
+// Function: SSD1306_init
+// Purpose: Initilaze the SSD1306 driver
+// Input: None
+// Output: None
+//------------------------------------------------
 void SSD1306_init()
 {
 	TWI_start(ADDRESS);
@@ -62,6 +71,13 @@ void SSD1306_init()
 	TWI_stop();
 }
 
+//------------------------------------------------
+// Function: SSD1306_cmd
+// Purpose: Send a command
+// Input:
+//  - uint8_t cmd : Command to send
+// Output: None
+//------------------------------------------------
 void SSD1306_cmd(uint8_t cmd)
 {
 	TWI_start(ADDRESS); //Start
@@ -70,6 +86,13 @@ void SSD1306_cmd(uint8_t cmd)
 	TWI_stop(); //Stop
 }
 
+//------------------------------------------------
+// Function: SSD1306_data
+// Purpose: Send data
+// Input:
+//  - uint8_t data : Data to send
+// Output: None
+//------------------------------------------------
 void SSD1306_data(uint8_t data)
 {
 	TWI_start(ADDRESS); //Start
@@ -78,6 +101,12 @@ void SSD1306_data(uint8_t data)
 	TWI_stop(); //Stop
 }
 
+//------------------------------------------------
+// Function: SSD1306_set_col_address
+// Purpose: Set the start of column
+// Input: None
+// Output: None
+//------------------------------------------------
 void SSD1306_set_col_address()
 {
 	SSD1306_cmd(0x21);
@@ -85,6 +114,12 @@ void SSD1306_set_col_address()
 	SSD1306_cmd(WIDTH-1);
 }
 
+//------------------------------------------------
+// Function: SSD1306_set_page_address
+// Purpose: Set the start of page
+// Input: None
+// Output: None
+//------------------------------------------------
 void SSD1306_set_page_address()
 {
 	SSD1306_cmd(0x22);
