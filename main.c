@@ -1,20 +1,13 @@
-//------------------------------------------------
-// Name: oled-display.c
-//
-// Created: 15.02.2021 18:44:51
-// Author : Filip Barto�
-// Websites used as reference:
-/* https://embedds.com/programming-avr-i2c-interface/
- * https://www.hwkitchen.cz/user/related_files/graficky-displej-oled-096-128x64-i2c-datasheet.pdf
- * https://www.avrfreaks.net/forum/solved-i2c-ssd1306-display
- * https://github.com/efthymios-ks/AVR-TWI
- * https://electronics.stackexchange.com/questions/273634/atmega328-i2c-twi-and-oled-display/337912
- * https://github.com/Sylaina/oled-display/blob/master/i2c.c
- * https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-2486-8-bit-AVR-microcontroller-ATmega8_L_datasheet.pdf
- * https://github.com/tibounise/SSD1306-AVR
- * https://www.nongnu.org/avr-libc/user-manual/pgmspace.html
-*/
-//------------------------------------------------
+/***************************************************
+* Name: main.c                                     *
+* Author: Filip Bartoš                             *
+*                                                  *
+* This project implements basic communication with *
+* the SSD1306 based OLED display                   *
+*                                                  *
+* GitHub page:                                     *
+* https://github.com/F1F7Y/SSD1306_oled_display    *
+***************************************************/
 
 #define F_CPU 16000000UL
 
@@ -90,7 +83,12 @@ const uint8_t display_buffer[1024] PROGMEM = {
 	0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01,
 	0x01, 0x01, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 
-
+//------------------------------------------------
+// Function: transfer_buffer
+// Purpose: Transfer the image to the display
+// Input: None
+// Output: None
+//------------------------------------------------
 void transfer_buffer()
 {
 	uint16_t i = 0;
@@ -98,33 +96,45 @@ void transfer_buffer()
 	SSD1306_set_col_address();
 	SSD1306_set_page_address();
 	
-	//Send buffer in 16 byte packets
-	//1024 / 16 = 64 packets in total
+	// Send buffer in 16 byte packets
+	// 1024 / 16 = 64 packets in total
 	for(i = 0; i < 64; i++)
 	{
+		// Send address and specify, that we're sending data
 		TWI_start(ADDRESS);
 		TWI_write(0x40);
+		// Send a 16 byte packet
 		for(j = 0; j < 16; j++)
 		{
 			TWI_write(pgm_read_byte(&(display_buffer[i*16+j])));
 		}
+		// Stop
 		TWI_stop();
+		// Reset j for next loop
 		j = 0;
 	}
 }
 
+//------------------------------------------------
+// Function: main
+// Purpose: The main function
+//------------------------------------------------
 int main(void)
 {
-	//Set pins PB0 & PD7 to OUTPUT
+	// Set pins PB0 & PD7 to OUTPUT
 	DDRB |= (1<<PB0);
 	DDRD |= (1<<PD7);
 	
+	// Initilaze TWI
 	TWI_init();
 	
+	// Initilaze the SSD1306 driver
 	SSD1306_init();
 	
+	// Transfer the image
 	transfer_buffer();
 	
+	// Light up the green LED, to show we're finnished
 	PORTD |= (1<<PD7);
 	
 }
