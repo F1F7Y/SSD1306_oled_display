@@ -1,5 +1,5 @@
 /***************************************
-* Name: SSD1306.c                      *
+* Name: SSD1306.h                      *
 * Author: Filip Bartoš                 *
 *                                      *
 * Contains the main functions used to  *
