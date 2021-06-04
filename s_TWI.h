@@ -1,9 +1,10 @@
-/*
- * s_TWI.h
- *
- * Created: 15.02.2021 19:07:19
- *  Author: Filip
- */ 
+/***************************************
+* Name: TWI.h                          *
+* Author: Filip Bartoš                 *
+*                                      *
+* Contains the main functions used for *
+* TWI communication                    *
+***************************************/
 
 
 #ifndef S_TWI_H_
