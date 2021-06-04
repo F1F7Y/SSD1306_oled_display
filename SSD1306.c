@@ -21,51 +21,50 @@ void SSD1306_init()
 {
 	TWI_start(ADDRESS);
 	
-	//Specify that we are sending a command
+	// Specify that we are sending a command
 	TWI_write(0x00);
 	
-	//Set display off
+	// Set display off
 	TWI_write(0xAE);
-	//Set display clock divide ratio/Oscillator frequency
+	// Set display clock divide ratio/Oscillator frequency
 	TWI_write(0xD5);
 	TWI_write(0x80);
-	//Set multiplex ratio
+	// Set multiplex ratio
 	TWI_write(0xA8);
 	TWI_write(0x3F);
-	//Set display offset
+	// Set display offset
 	TWI_write(0xD3);
 	TWI_write(0x00);
-	//Set display start line
+	// Set display start line
 	TWI_write(0x40 | 0x00);
-	//Set charge pump
+	// Set charge pump
 	TWI_write(0x8D);
 	TWI_write(0x14); //0x10 / 0x14
-	//??
+	// ??
 	TWI_write(0x20);
 	TWI_write(0x00);
-	//Set segment re-map
+	// Set segment re-map
 	TWI_write(0xA1 | 0x1);
-	//Set TWI_write output scan direction
+	// Set TWI_write output scan direction
 	TWI_write(0xC8);
-	//Set COM pins hardware configuration
+	// Set COM pins hardware configuration
 	TWI_write(0xDA);
 	TWI_write(0x12);
-	//Set contrast control
+	// Set contrast control
 	TWI_write(0x81);
 	TWI_write(0xCF); //0x9F / 0xCF
-	//Set pre-charge period
+	// Set pre-charge period
 	TWI_write(0xD9);
 	TWI_write(0xF1); //0x22 / 0xF1
-	//Set VCOMH deselect level
+	// Set VCOMH deselect level
 	TWI_write(0xDB);
 	TWI_write(0x40);
-	//Set Entire Display on/off
+	// Set Entire Display on/off
 	TWI_write(0xA4);
-	//Set normal/inverse display
+	// Set normal/inverse display
 	TWI_write(0xA6);
-	//??
-	//SSD1306_cmd(0x2E);
-	//Set display on
+
+	// Set display on
 	TWI_write(0xAF);
 	
 	TWI_stop();
@@ -80,10 +79,10 @@ void SSD1306_init()
 //------------------------------------------------
 void SSD1306_cmd(uint8_t cmd)
 {
-	TWI_start(ADDRESS); //Start
-	TWI_write(0x00); //Specify that we are sending a COMMAND(0x00 or 0x80)
-	TWI_write(cmd); //Send COMMAND
-	TWI_stop(); //Stop
+	TWI_start(ADDRESS); // Start
+	TWI_write(0x00); // Specify that we are sending a COMMAND(0x00 or 0x80)
+	TWI_write(cmd); // Send COMMAND
+	TWI_stop(); // Stop
 }
 
 //------------------------------------------------
@@ -95,10 +94,10 @@ void SSD1306_cmd(uint8_t cmd)
 //------------------------------------------------
 void SSD1306_data(uint8_t data)
 {
-	TWI_start(ADDRESS); //Start
-	TWI_write(0x40); //Specify that we are sending DATA(0x40)
-	TWI_write(data); //Send DATA
-	TWI_stop(); //Stop
+	TWI_start(ADDRESS); // Start
+	TWI_write(0x40); // Specify that we are sending DATA(0x40)
+	TWI_write(data); // Send DATA
+	TWI_stop(); // Stop
 }
 
 //------------------------------------------------
