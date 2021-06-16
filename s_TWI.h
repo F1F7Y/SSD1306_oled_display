@@ -10,9 +10,6 @@
 #ifndef S_TWI_H_
 #define S_TWI_H_
 
-#ifdef __cplusplus
-extern "C"{
-#endif
 
 #define F_CPU 16000000UL
 #define F_TWI 100000UL	//TWI Clock
@@ -38,8 +35,5 @@ void TWI_write(uint8_t byte);
 uint8_t TWI_read_ACK(void);
 uint8_t TWI_read_NACK(void);
 
-#ifdef __cplusplus
-}
-#endif
 
 #endif /* S_TWI_H_ */
