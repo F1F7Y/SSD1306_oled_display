@@ -15,4 +15,4 @@ Websites used as reference:
 9. https://www.nongnu.org/avr-libc/user-manual/pgmspace.html
 
 A working example:
-![An image](https://drive.google.com/uc?export=view&id=1ijAFjgCtdn1zv9koneShywqX5Dtw8jQl)
+![example image](https://github.com/F1F7Y/SSD1306_oled_display/blob/main/host/clown.jpg)
